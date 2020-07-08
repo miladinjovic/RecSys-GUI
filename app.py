@@ -33,7 +33,9 @@ def deleteModel():
 
     return recommender.deleteModel(algo, model)
     
-
+@app.route("/stats")
+def stats():
+    return render_template("stat.html")
 
 if __name__ == '__main__':
     app.run()

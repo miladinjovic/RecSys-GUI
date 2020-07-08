@@ -7,6 +7,7 @@
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <link rel="stylesheet" media="screen" href="static/bootstrap-4.5.0-dist/css/bootstrap.min.css">
     <link href="static/colorlib-regform-1/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <style>
             .topnav {
       overflow: hidden;
@@ -62,6 +63,7 @@
 <body style="background-color: #2c6ed5">
     <div class="topnav" id="myTopnav">
       <a href="#" class="active" >Home</a>
+      <a href="{{ url_for('stats') }}">Stats</a>
       <a href="{{ url_for('form') }}">Form</a>
       <a href="{{ url_for('algorithms') }}">Algorithms</a>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -85,33 +87,88 @@
                         information, version 1.0
                     </blockquote>
                       <div class="text-justify">
-                          <i>
+                          <br/>
+                          This dataset contains six files:
+                          <br/><br/>
+                          <dl class="row">
+                              <dt class="col-sm-3">ydata-ymovies-user-movie-ratings-train-v1_0.txt</dt>
+                              <dd class="col-sm-9">
+                                     The training data contains <b>7,642</b> \(( |U|)\), <b>11,915</b> movies/items
+                                  \((|I|)\), and <b>211,231</b> ratings \((|R|)\). The <b>average user rating</b>
+                                    $$\overline{R_u} = \frac{\sum_u \overline{r_u}}{|U|}$$
+                                  macro-averaged) is <b>9.64</b> and the <b>average item rating</b>
+                                  (macro-averaged) is <b>9.32</b>. The <b>average number of ratings per user</b>
+                                  is <b>27.64</b> and the <b>average number of ratings per item</b> is <b>17.73</b>. All
+                                  users have rated at least 10 items and all items are rated by at
+                                  least one user. The <b>density ratio</b> $$\delta = \frac{|R|}{|U|*|I|}$$
+                                  is <b>0.0023</b>, meaning that only <b>0.23%</b> of entries in the user-item
+                                    matrix are filled.
+                              </dd>
+
+                              <dt class="col-sm-3">ydata-ymovies-user-movie-ratings-test-v1_0.txt</dt>
+                              <dd class="col-sm-9">
+                                      The test data contains 2,309 users, 2,380 items, and 10,136
+                                    ratings. There are no test users/items that do not also appear in
+                                    the training data. The average user rating is 9.66 and the average
+                                    item rating is 9.54. The average number of ratings/user is 4.39
+                                    and the average number of ratings/item is 4.26. All users have
+                                    rated at least one item and all items have been rated by at least
+                                    one user.
+                              </dd>
+
+                              <dt class="col-sm-3 mb-3">ydata-ymovies-user-demographics-v1_0.txt</dt>
+                              <dd class="col-sm-9">
+                                  It contains user demographic information.
+                              </dd>
+                              <dt class="col-sm-3 mb-3">ydata-ymovies-movie-content-descr-v1_0.txt</dt>
+                              <dd class="col-sm-9">
+                                  It contains movie descriptive content information.
+                              </dd>
+
+                              <dt class="col-sm-3">ydata-ymovies-mapping-to-movielens-v1_0.txt</dt>
+                              <dd class="col-sm-9">
+                                    It contains a mapping
+                                    from the movie ids used in this Yahoo! Movies dataset to the
+                                    corresponding movie ids and titles used in the MovieLens
+                                    dataset. The mapping may be incomplete or incorrect. The MovieLens
+                                    dataset was created by the GroupLens research group at the
+                                    University of Minnesota, and is not associated with Yahoo! or
+                                    available via Yahoo!. More information about the MovieLens dataset
+                                    is available at
+                                    <a href="http://www.cs.umn.edu/Research/GroupLens/index.html" target="_blank">http://www.cs.umn.edu/Research/GroupLens/index.html</a>.
+                              </dd>
+
+                              <dt class="col-sm-3">ydata-ymovies-mapping-to-eachmovie-v1_0.txt</dt>
+                              <dd class="col-sm-9">
+                                  It contains a mapping
+                                    from the movie ids used in this Yahoo! Movies dataset to the
+                                    corresponding movies ids and titles used in the EachMovie
+                                    dataset. The mapping may be incomplete or incorrect. The EachMovie
+                                    dataset was created by the Digital Equipment Corporation's Systems
+                                    Research Center and is not associated with Yahoo! or available via
+                                    Yahoo!.
+                              </dd>
+
+                           </dl>
+
+                         Each file is based on data generated by Yahoo! Movies on or before November
+                         2003, with some modifications and additions by Yahoo! Research. All
+                         user ids are anonymized.
+                         <br/><br/>
+                          <hr/>
+                          <i class="fa fa-exclamation-triangle"></i>
+                          <i style="color:red">
                             This dataset is provided as part of the Yahoo! Research Alliance
                             Webscope program, to be used for approved non-commercial research
                             purposes by recipients who have signed a Data Sharing Agreement with
                             Yahoo!. This dataset is not to be redistributed. No personally
                             identifying information is available in this dataset.
                           </i>
-                          <br/>
-                          <br/>
-                          This dataset contains six files:
-                          <ul>
-                              <li>ydata-ymovies-user-movie-ratings-train-v1_0.txt </li>
-                              <li>ydata-ymovies-user-movie-ratings-test-v1_0.txt </li>
-                              <li>ydata-ymovies-user-demographics-v1_0.txt </li>
-                              <li>ydata-ymovies-movie-content-descr-v1_0.txt </li>
-                              <li>ydata-ymovies-mapping-to-movielens-v1_0.txt </li>
-                              <li>ydata-ymovies-mapping-to-eachmovie-v1_0.txt </li>
-                          </ul>
-                         Each file is based on data generated by Yahoo! Movies on or before November
-                         2003, with some modifications and additions by Yahoo! Research. All
-                         user ids are anonymized. Fields in each data file are delimited with
-                         tab ("\t") characters.
                       </div>
                   </div>
                   <div class="card-footer text-center">
                             &copy; Research Alliance Webscope program
-                            <a href="http://research.yahoo.com">http://research.yahoo.com</a>.
+                            <a href="http://research.yahoo.com" target="_blank">http://research.yahoo.com</a>.
                   </div>
               </div>
          </div>
