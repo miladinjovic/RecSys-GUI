@@ -18,8 +18,8 @@ def form():
 def recommend():
     user = request.form["user"]
 
-    return render_template("recommendations.html", history = recommender.getHistory(int(user)),
-                                                   recommendations = recommender.recommend(request.form),
+    return render_template("proba.html", history = recommender.getHistory(int(user)),
+                                                   # recommendations = recommender.recommend(request.form),
                                                    movies = recommender.movieID_to_info )
 
 @app.route("/algorithms")
