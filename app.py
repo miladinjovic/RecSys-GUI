@@ -14,13 +14,21 @@ def start_app():
 def form():
     return render_template("form.html", models=recommender.models)
 
+# @app.route('/recommend', methods=['POST'])
+# def recommend():
+#     user = request.form["user"]
+#
+#     return render_template("recommendations.html", history = recommender.getHistory(int(user)),
+#                                                    recommendations = recommender.recommend(request.form),
+#                                                    movies = recommender.movieID_to_info )
+
 @app.route('/recommend', methods=['POST'])
 def recommend():
     user = request.form["user"]
 
-    return render_template("recommendations.html", history = recommender.getHistory(int(user)),
-                                                   recommendations = recommender.recommend(request.form),
-                                                   movies = recommender.movieID_to_info )
+    return render_template("recommendations-js.html", history = recommender.getHistory(int(user)),
+                                         recommendations=recommender.recommend(request.form),
+                                         movies = recommender.movieID_to_info)
 
 @app.route("/algorithms")
 def algorithms():
