@@ -12,7 +12,8 @@ def start_app():
 
 @app.route('/form')
 def form():
-    return render_template("form.html", models=recommender.models)
+    return render_template("form.html", models=recommender.models,
+                                        users = recommender.getRandomUsers())
 
 # @app.route('/recommend', methods=['POST'])
 # def recommend():
@@ -44,6 +45,10 @@ def deleteModel():
 @app.route("/stats")
 def stats():
     return render_template("stat.html")
+
+@app.route("/proba")
+def proba():
+    return recommender.getRandomUsers()
 
 if __name__ == '__main__':
     app.run()

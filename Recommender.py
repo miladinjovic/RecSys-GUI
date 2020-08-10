@@ -7,7 +7,7 @@ Created on Mon May 18 16:45:15 2020
 
 import itertools
 
-from surprise import accuracy, KNNBaseline
+from surprise import KNNBaseline
 from collections import defaultdict
 import math
 from YahooDataset import YahooDataset
@@ -21,7 +21,8 @@ from tmdbv3api import TMDb
 from tmdbv3api import Movie
 from tmdbv3api import TV
 
-
+import numpy as np
+from faker import Faker
 
 class Recommender:
 
@@ -252,5 +253,16 @@ class Recommender:
             topN = [(self.getAdditionalData(movieId), None) for movieId in topN]
 
         return topN
+
+    def getRandomUsers(self):
+        randomIds = np.random.randint(0, self.fullTrainSet.n_users, 30)
+
+        faker = Faker()
+        randomUsers = {}
+        for id in randomIds:
+            randomUsers[str(id)] = faker.name()
+
+        return randomUsers
+
 
 
