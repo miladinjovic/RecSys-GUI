@@ -71,7 +71,7 @@ class Recommender:
         return "success"
 
     def getHistory(self, user, k=10):
-        history = [(self.getAdditionalData(movieId), rating) for movieId, rating in self.yd.getHistory(user)]
+        history = [(self.getAdditionalData(movieId), rating) for movieId, rating in self.yd.getHistory(user) if movieId != "0"]
         return history
 
     def getAdditionalData(self, movieId):
@@ -255,7 +255,7 @@ class Recommender:
         return topN
 
     def getRandomUsers(self):
-        randomIds = np.random.randint(0, self.fullTrainSet.n_users, 30)
+        randomIds = np.random.randint(1, self.fullTrainSet.n_users, 30)
 
         faker = Faker()
         randomUsers = {}
