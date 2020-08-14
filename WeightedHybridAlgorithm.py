@@ -8,7 +8,7 @@ from surprise import AlgoBase
 
 class WeightedHybridAlgorithm(AlgoBase):
 
-    def __init__(self, algorithm1, algorithm2, weights=[]):
+    def __init__(self, algorithm1, algorithm2, weights=[0.6, 0.4]):
         AlgoBase.__init__(self)
         self.algorithm1 = algorithm1
         self.algorithm2 = algorithm2
@@ -26,6 +26,11 @@ class WeightedHybridAlgorithm(AlgoBase):
         return self 
     
     def estimate(self, u, i):
-        score = self.algorithm1.estimate(u, i)*self.weights[0] + self.algorithm2.estimate(u, i)[0]*self.weights[1]          
+        prediction = self.algorithm2.estimate(u, i)
+        
+        if type(prediction) is tuple:
+            prediction = prediction[0]
+        
+        score = self.algorithm1.estimate(u, i)*self.weights[0] + prediction*self.weights[1]          
         return score
         
