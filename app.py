@@ -28,7 +28,7 @@ def recommend():
     user = request.form["user"]
 
     return render_template("recommendations-js.html", history = recommender.getHistory(int(user)),
-                                         # recommendations=recommender.recommend(request.form),
+                                         recommendations=recommender.recommend(request.form),
                                          movies = recommender.movieID_to_info)
 
 @app.route("/algorithms")
@@ -46,9 +46,6 @@ def deleteModel():
 def stats():
     return render_template("stat.html")
 
-@app.route("/proba")
-def proba():
-    return recommender.getRandomUsers()
 
 if __name__ == '__main__':
     app.run()

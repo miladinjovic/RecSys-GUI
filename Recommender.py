@@ -52,7 +52,7 @@ class Recommender:
         topN = []
         
         for userID, movieID, actualRating, estimatedRating, _ in predictions:
-            if(estimatedRating >= minimumRating):
+            if(movieID != "0" and estimatedRating >= minimumRating):
                 topN.append( (movieID, estimatedRating) )
         
         topN.sort(key=lambda x: x[1], reverse = True)
@@ -150,7 +150,7 @@ class Recommender:
                 predictions = svd.test(antiTestSet)
 
             topN = self._getTopNForUser(predictions)
-            topN = [(self.getAdditionalData(movieId), round(estimated, 2)) for movieId, estimated in topN]
+            topN = [(self.getAdditionalData(movieId), int(round(estimated, 0)))for movieId, estimated in topN]
 
         elif algo == "knnItemBaseline":
 
@@ -179,7 +179,7 @@ class Recommender:
                 predictions = knn.test(antiTestSet)
 
             topN = self._getTopNForUser(predictions)
-            topN = [(self.getAdditionalData(movieId), round(estimated, 2)) for movieId, estimated in topN]
+            topN = [(self.getAdditionalData(movieId), int(round(estimated, 0))) for movieId, estimated in topN]
 
         elif algo == "weightedHybrid":
 
@@ -189,7 +189,7 @@ class Recommender:
             weightedHybrid.fit(self.fullTrainSet)
             predictions = weightedHybrid.test(antiTestSet)
             topN = self._getTopNForUser(predictions)
-            topN = [(self.getAdditionalData(movieId), round(estimated, 2)) for movieId, estimated in topN]
+            topN = [(self.getAdditionalData(movieId), int(round(estimated, 0))) for movieId, estimated in topN]
 
         elif algo == "userCollaborative":
 
@@ -218,8 +218,8 @@ class Recommender:
                 predictions = knn.test(antiTestSet)
 
             topN = self._getTopNForUser(predictions, minimumRating=0.0)
-            topN = [(self.getAdditionalData(movieId), round(estimated, 2)) for movieId, estimated in topN]
-
+            # topN = [(self.getAdditionalData(movieId), round(estimated, 2)) for movieId, estimated in topN]
+            topN = [(self.getAdditionalData(movieId), "") for movieId, estimated in topN]
 
         elif algo == "bpr":
 
@@ -250,7 +250,7 @@ class Recommender:
 
             topN = bpr.recommend(user)
 
-            topN = [(self.getAdditionalData(movieId), None) for movieId in topN]
+            topN = [(self.getAdditionalData(movieId), "") for movieId in topN]
 
         return topN
 
