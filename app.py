@@ -10,6 +10,10 @@ recommender = Recommender()
 def start_app():
     return render_template("home.html")
 
+@app.route('/dataset')
+def dataset():
+    return  render_template("dataset.html")
+
 @app.route('/form')
 def form():
     return render_template("form.html", models=recommender.models,

@@ -112,6 +112,7 @@
 <body>
     <div class="topnav" id="myTopnav">
       <a href="{{ url_for('start_app') }}">Home</a>
+      <a href="{{ url_for('dataset') }}">Dataset</a>
       <a href="{{ url_for('stats') }}">Stats</a>
       <a href="{{ url_for('form') }}" class="active">Form</a>
       <a href="{{ url_for('algorithms') }}">Algorithms</a>
@@ -132,11 +133,11 @@
                             <div class="rs-select2 js-select-simple select--no-search" style="width: 500px;">
                                 <select name="user">
                                     <option disabled="disabled" selected="selected">USER</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-<!--                                    {% for id, name in users.items() %}-->
-<!--                                        <option value="{{ id }}"> {{ name }}</option>-->
-<!--                                    {% endfor %}-->
+<!--                                    <option value="1">1</option>-->
+<!--                                    <option value="2">2</option>-->
+                                    {% for id, name in users.items() %}
+                                        <option value="{{ id }}"> {{ name }}</option>
+                                    {% endfor %}
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>

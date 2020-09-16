@@ -86,20 +86,24 @@
             <div class="col-md-3">
                 <!-- Tabs nav -->
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link mb-3 p-3 shadow active" style="background-color:black;"  id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                    <a class="nav-link mb-3 p-3 shadow active" style="background-color:black;"  id="v-pills-svd-tab" data-toggle="pill" href="#v-pills-svd" role="tab" aria-controls="v-pills-svd" aria-selected="true">
                         <span class="font-weight-bold small text-uppercase">SVD</span>
                     </a>
 
-                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-profile-tab" style="background-color:black;"  data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-knn-tab" style="background-color:black;"  data-toggle="pill" href="#v-pills-knn" role="tab" aria-controls="v-pills-knn" aria-selected="false">
                         <span class="font-weight-bold small text-uppercase">KNN Item Baseline</span>
                     </a>
 
-                    <a class="nav-link mb-3 p-3 shadow" style="background-color:black;"  id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a class="nav-link mb-3 p-3 shadow" style="background-color:black;"  id="v-pills-wh-tab" data-toggle="pill" href="#v-pills-wh" role="tab" aria-controls="v-pills-wh" aria-selected="false">
                         <span class="font-weight-bold small text-uppercase">Weighted Hybrid</span>
                     </a>
 
-                    <a class="nav-link mb-3 p-3 shadow" style="background-color:black;" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                    <a class="nav-link mb-3 p-3 shadow" style="background-color:black;" id="v-userC-tab" data-toggle="pill" href="#v-pills-userC" role="tab" aria-controls="v-pills-userC" aria-selected="false">
                         <span class="font-weight-bold small text-uppercase">User Collaborative</span>
+                    </a>
+
+                    <a class="nav-link mb-3 p-3 shadow" style="background-color:black;" id="v-bpr-tab" data-toggle="pill" href="#v-pills-bpr" role="tab" aria-controls="v-pills-bpr" aria-selected="false">
+                        <span class="font-weight-bold small text-uppercase">BPR</span>
                     </a>
                 </div>
             </div>
@@ -108,18 +112,19 @@
             <div class="col-md-9">
                 <!-- Tabs content -->
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                    <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-svd" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <h4 class="font-italic mb-4">SVD</h4>
-                        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs nav-fill" id="svdTab" role="tablist">
                           <li class="nav-item">
-                            <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
+                            <a class="nav-link active" id="about-svd" data-toggle="tab" href="#aboutSvd" role="tab" aria-controls="about" aria-selected="true">About</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" id="models-tab" data-toggle="tab" href="#models" role="tab" aria-controls="models" aria-selected="false">Models</a>
+                            <a class="nav-link" id="models-svd" data-toggle="tab" href="#modelsSvd" role="tab" aria-controls="models" aria-selected="false">Models</a>
                           </li>
                         </ul>
-                        <div class="tab-content" id="myTabContent">
-                          <div class="tab-pane show active" id="about" role="tabpanel" aria-labelledby="about-tab"> <br/>
+                        <div class="tab-content" id="svdTabContent">
+                          <div class="tab-pane show active" id="aboutSvd" role="tabpanel" aria-labelledby="about-tab"> <br/>
                               <p>
                                   The famous SVD algorithm, as popularized by Simon Funk during the Netflix Prize.
                                   The prediction \( \hat{r}_{ui} \) is set as: $$ \hat{r}_{ui} = \mu + b_u + b_i + q_i^Tp_u $$
@@ -150,7 +155,7 @@
                               </blockquote>
                           </div>
 
-                          <div class="tab-pane fade" id="models" role="tabpanel" aria-labelledby="models-tab">
+                          <div class="tab-pane fade" id="modelsSvd" role="tabpanel" aria-labelledby="models-tab">
                                 <br/>
                                 <table class="table">
                                   <thead class="thead-light">
@@ -178,20 +183,183 @@
 
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <h4 class="font-italic mb-4">Bookings</h4>
-                        <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-knn" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <h4 class="font-italic mb-4">KNN Item Baseline</h4>
+                        <ul class="nav nav-tabs nav-fill" id="KNNTab" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link active" id="about-knn" data-toggle="tab" href="#aboutKNN" role="tab" aria-controls="about" aria-selected="true">About</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="models-knn" data-toggle="tab" href="#modelsKNN" role="tab" aria-controls="models" aria-selected="false">Models</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content" id="KnnTabContent">
+                          <div class="tab-pane show active" id="aboutKNN" role="tabpanel" aria-labelledby="about-tab"> <br/>
+                              <p>
+                                A basic collaborative filtering algorithm taking into account a baseline rating.<br/><br/>
+                                The prediction \( \hat{r}_{ui} \) is set as:
+                                 $$ \hat{r}_{ui} = b_{ui} + \frac{ \sum\limits_{j \in N^k_u(i)}
+                                    \text{sim}(i, j) \cdot (r_{uj} - b_{uj})} {\sum\limits_{j \in
+                                    N^k_u(i)} \text{sim}(i, j)} $$
+                                  where \( N^k_u(i) \) is a set of the \( k \) nearest neighbors of item \( i \) that are rated by user \( u \).
+                                  <br/>More information about baseline rating is available <a href="https://surprise.readthedocs.io/en/stable/basic_algorithms.html#surprise.prediction_algorithms.baseline_only.BaselineOnly">here</a>.
+                              </p>
+
+                               <blockquote class="blockquote">
+                                  <footer class="blockquote-footer">
+                                      <cite title="Surprise">
+                                          From
+                                        <a href="https://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBaseline" target="_blank">
+                                            Surprise
+                                        </a>
+                                      </cite>
+                                  </footer>
+                              </blockquote>
+                          </div>
+
+                          <div class="tab-pane fade" id="modelsKNN" role="tabpanel" aria-labelledby="models-tab">
+                                <br/>
+                                <table class="table">
+                                  <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Model name</th>
+                                      <th scope="col">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                   {% for model in models["knnItemBaseline"] %}
+                                        <tr>
+                                          <td>{{ model }}</td>
+                                          <td>
+                                                <button type="button" class="btn btn-info float-right" data-href="algo=svd&model={{ model }}" data-toggle="modal" data-target="#confirm-delete" >
+                                                   <span class="fa fa-trash"></span> Trash
+                                                </button>
+                                          </td>
+                                        </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                </table>
+                          </div>
+
+                        </div>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <h4 class="font-italic mb-4">Reviews</h4>
-                        <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-wh" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <h4 class="font-italic mb-4">Weighted Hybrid</h4>
+                        <p>Weighted technique computes the prediction score as results of all recommendation approaches by
+                        considering them as variables in a linear combination. This technique gives each of them weight and
+                        summing up the weighted results.<br/>
+
+                        Supposed that there are \( n \) recommendation approaches to be combined using weighted strategy, the prediction score of user \( u \)  to item \( i \) can be computed as follow:
+                            $$ \hat{r}_{ui} = \sum\limits_{j = 1 }^n w_j \cdot \hat{r}_{ui}^{(j)} $$
+                        where \( \hat{r}_{ui}^{(j)} \) is prediction of algorithm \( j \) and \( w_j \) denotes weight of algorithm \( j \).
+                        </p>
+                        <i>
+                            We combined two recommendation approaches (SVD and KNN Item Baseline) as follows:
+                            $$ 0.6 \cdot \hat{r}_{ui}^{(svd)} + 0.4 \cdot \hat{r}_{ui}^{(knn)} $$
+                        </i>
                     </div>
 
-                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <h4 class="font-italic mb-4">Confirm booking</h4>
-                        <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-userC" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <h4 class="font-italic mb-4">User collaborative filtering</h4>
+                        <ul class="nav nav-tabs nav-fill" id="userTab" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link active" id="about-userF" data-toggle="tab" href="#aboutUserF" role="tab" aria-controls="about" aria-selected="true">About</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="models-userF" data-toggle="tab" href="#modelsUserF" role="tab" aria-controls="models" aria-selected="false">Models</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content" id="userFTabContent">
+                          <div class="tab-pane show active" id="aboutUserF" role="tabpanel" aria-labelledby="about-tab"> <br/>
+                              <p>
+                                  Collaborative filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (collaborating).
+                                  The underlying assumption of the collaborative filtering approach is that if a person A has the same opinion as a person B on an issue, A is more likely to have B's opinion on a different issue than that of a randomly chosen person. For example, a collaborative filtering recommendation system for television tastes could make predictions about which television show a user should like given a partial list of that user's tastes (likes or dislikes).
+                                   Note that these predictions are specific to the user, but use information gleaned from many users.
+                              </p>
+
+                               <blockquote class="blockquote">
+                                  <footer class="blockquote-footer">
+                                      <cite title="Wikipedia">
+                                          From
+                                        <a href="https://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank">
+                                            Wikipedia
+                                        </a>
+                                      </cite>
+                                  </footer>
+                              </blockquote>
+                          </div>
+
+                          <div class="tab-pane fade" id="modelsUserF" role="tabpanel" aria-labelledby="models-tab">
+                                <br/>
+                                <table class="table">
+                                  <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Model name</th>
+                                      <th scope="col">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                   {% for model in models["userCollaborative"] %}
+                                        <tr>
+                                          <td>{{ model }}</td>
+                                          <td>
+                                                <button type="button" class="btn btn-info float-right" data-href="algo=svd&model={{ model }}" data-toggle="modal" data-target="#confirm-delete" >
+                                                   <span class="fa fa-trash"></span> Trash
+                                                </button>
+                                          </td>
+                                        </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                </table>
+                          </div>
+                        </div>
                     </div>
+                    <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-bpr" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <h4 class="font-italic mb-4">BPR</h4>
+                        <ul class="nav nav-tabs nav-fill" id="bprTab" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link active" id="about-bpr" data-toggle="tab" href="#aboutBpr" role="tab" aria-controls="about" aria-selected="true">About</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="models-bpr" data-toggle="tab" href="#modelsBpr" role="tab" aria-controls="models" aria-selected="false">Models</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content" id="bprTabContent">
+                          <div class="tab-pane show active" id="aboutBpr" role="tabpanel" aria-labelledby="about-tab"> <br/>
+                               <blockquote cite="http://ethen8181.github.io/machine-learning/recsys/4_bpr.html">
+                                   "... <i>but a lot of times, what we wish to optimize for is not the difference between the true interaction and the predicted interaction, but instead is the ranking of the items. Meaning given a user, what is the top-N most likely item that the user prefers.
+                                      And this is what <b>Bayesian Personalized Ranking (BPR)</b> tries to accomplish. The idea is centered around sampling positive (items user has interacted with) and
+                                   negative (items user hasn't interacted with) items and running pairwise comparisons. </i>"
+                              </blockquote>
+                               From <a href="http://ethen8181.github.io/machine-learning/recsys/4_bpr.html" target="_blank">http://ethen8181.github.io/machine-learning/recsys/4_bpr.html</a>.
+                          </div>
+
+                          <div class="tab-pane fade" id="modelsBpr" role="tabpanel" aria-labelledby="models-tab">
+                                <br/>
+                                <table class="table">
+                                  <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Model name</th>
+                                      <th scope="col">&nbsp;</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                   {% for model in models["bpr"] %}
+                                        <tr>
+                                          <td>{{ model }}</td>
+                                          <td>
+                                                <button type="button" class="btn btn-info float-right" data-href="algo=svd&model={{ model }}" data-toggle="modal" data-target="#confirm-delete" >
+                                                   <span class="fa fa-trash"></span> Trash
+                                                </button>
+                                          </td>
+                                        </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                </table>
+                          </div>
+                    </div>
+
                 </div>
             </div>
         </div>

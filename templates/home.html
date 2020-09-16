@@ -5,9 +5,8 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <link rel="stylesheet" media="screen" href="static/bootstrap-4.5.0-dist/css/bootstrap.min.css">
     <link href="static/colorlib-regform-1/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" media="screen" href="static/bootstrap-4.5.0-dist/css/bootstrap.min.css">
     <style>
             .topnav {
       overflow: hidden;
@@ -63,6 +62,7 @@
 <body style="background-color: #2c6ed5">
     <div class="topnav" id="myTopnav">
       <a href="#" class="active" >Home</a>
+      <a href="{{ url_for('dataset') }}">Dataset</a>
       <a href="{{ url_for('stats') }}">Stats</a>
       <a href="{{ url_for('form') }}">Form</a>
       <a href="{{ url_for('algorithms') }}">Algorithms</a>
@@ -78,102 +78,48 @@
          <div class="col-sm-12">
              <div class="card shadow">
                   <div class="card-header">
-                   <h3 class="card-title text-center">Dataset</h3>
+                   <h3 class="card-title text-center">Recommender system</h3>
                   </div>
                   <div class="card-body">
                     <blockquote class="blockquote">
-                        Yahoo! Movies user ratings of movies, and movie descriptive content
-                        information, version 1.0
+                        A subclass of information filtering system that seeks to predict the "rating" or "preference"
+                        a user would give to an item.
                     </blockquote>
+                      <hr/>
                       <div class="text-justify">
-                          <br/>
-                          <h5>This dataset contains six files:</h5>
-                         <br/>
-                          <dl class="row">
-                              <dt class="col-sm-3">ydata-ymovies-user-movie-ratings-train-v1_0.txt</dt>
-                              <dd class="col-sm-9">
-                                     The training data contains <b>7,642</b> \(( |U|)\), <b>11,915</b> movies/items
-                                  \((|I|)\), and <b>211,231</b> ratings \((|R|)\). The average user rating
-                                    $$\overline{R_u} = \frac{\sum_u \overline{r_u}}{|U|}$$
-                                  macro-averaged) is <b>9.64</b> and the average item rating
-                                  (macro-averaged) is <b>9.32</b>. The average number of ratings per user
-                                  is <b>27.64</b> and the average number of ratings per item is <b>17.73</b>. All
-                                  users have rated at least 10 items and all items are rated by at
-                                  least one user. The density ratio $$\delta = \frac{|R|}{|U|\cdot|I|}$$
-                                  is <b>0.0023</b>, meaning that only <b>0.23%</b> of entries in the user-item
-                                    matrix are filled.
-                              </dd>
+                          <p>
+                              During the last few decades, with the rise of Youtube, Amazon, Netflix and many other such web services, recommender systems have taken more and more place in our lives.
+                              From e-commerce (suggest to buyers articles that could interest them) to online advertisement (suggest to users the right contents,
+                              matching their preferences), recommender systems are today unavoidable in our daily online journeys.
+                          </p>
 
-                              <dt class="col-sm-3">ydata-ymovies-user-movie-ratings-test-v1_0.txt</dt>
-                              <dd class="col-sm-9">
-                                      The test data contains <b>2,309</b> users, <b>2,380</b> items, and <b>10,136</b>
-                                    ratings. There are no test users/items that do not also appear in
-                                    the training data. The average user rating is <b>9.66</b> and the average
-                                    item rating is <b>9.54</b>. The average number of ratings/user is <b>4.39</b>
-                                    and the average number of ratings/item is <b>4.26</b>. All users have
-                                    rated at least one item and all items have been rated by at least
-                                    one user.
-                              </dd>
+                          <p>
+                              In a very general way, recommender systems are algorithms aimed at suggesting relevant items to users (items being movies to watch, text to read, products to buy or anything else depending on industries).
+                          </p>
 
-                              <dt class="col-sm-3 mb-3">ydata-ymovies-user-demographics-v1_0.txt</dt>
-                              <dd class="col-sm-9">
-                                  It contains user demographic information.
-                              </dd>
-                              <dt class="col-sm-3 mb-3">ydata-ymovies-movie-content-descr-v1_0.txt</dt>
-                              <dd class="col-sm-9">
-                                  It contains movie descriptive content information.
-                              </dd>
-
-                              <dt class="col-sm-3">ydata-ymovies-mapping-to-movielens-v1_0.txt</dt>
-                              <dd class="col-sm-9">
-                                    It contains a mapping
-                                    from the movie ids used in this Yahoo! Movies dataset to the
-                                    corresponding movie ids and titles used in the MovieLens
-                                    dataset. The mapping may be incomplete or incorrect. The MovieLens
-                                    dataset was created by the GroupLens research group at the
-                                    University of Minnesota, and is not associated with Yahoo! or
-                                    available via Yahoo!. More information about the MovieLens dataset
-                                    is available at
-                                    <a href="http://www.cs.umn.edu/Research/GroupLens/index.html" target="_blank">http://www.cs.umn.edu/Research/GroupLens/index.html</a>.
-                              </dd>
-
-                              <dt class="col-sm-3">ydata-ymovies-mapping-to-eachmovie-v1_0.txt</dt>
-                              <dd class="col-sm-9">
-                                  It contains a mapping
-                                    from the movie ids used in this Yahoo! Movies dataset to the
-                                    corresponding movies ids and titles used in the EachMovie
-                                    dataset. The mapping may be incomplete or incorrect. The EachMovie
-                                    dataset was created by the Digital Equipment Corporation's Systems
-                                    Research Center and is not associated with Yahoo! or available via
-                                    Yahoo!.
-                              </dd>
-
-                           </dl>
-
-                         Each file is based on data generated by Yahoo! Movies on or before November
-                         2003, with some modifications and additions by Yahoo! Research. All
-                         user ids are anonymized.
-                         <br/><br/>
-                          <hr/>
-                          <i class="fa fa-exclamation-triangle"></i>
-                          <i style="color:red">
-                            This dataset is provided as part of the Yahoo! Research Alliance
-                            Webscope program, to be used for approved non-commercial research
-                            purposes by recipients who have signed a Data Sharing Agreement with
-                            Yahoo!. This dataset is not to be redistributed. No personally
-                            identifying information is available in this dataset.
-                          </i>
+                          <p>
+                              Recommender systems are really critical in some industries as they can generate a huge amount of income when they are efficient or also be a way to stand out significantly from competitors.
+                              As a proof of the importance of recommender systems, we can mention that, a few years ago, Netflix organised a challenges (the “Netflix prize”) where the goal was to produce a recommender system that performs better than its own algorithm with a prize of 1 million dollars to win.
+                          </p>
+                      </div>
+                      <div class="text-center">
+                          <figure>
+                               <img  src="static/images/rec-intro.svg" class="img-fluid" />
+                               <figcaption class="figure-caption">Illustration of the Recommendation Process</figcaption>
+                          </figure>
                       </div>
                   </div>
                   <div class="card-footer text-center">
-                            &copy; Research Alliance Webscope program
-                            <a href="http://research.yahoo.com" target="_blank">http://research.yahoo.com</a>.
+                      <i class="fa fa-exclamation-triangle"></i>
+                      <i>
+                          All content is from these links: <a href="https://en.wikipedia.org/wiki/Recommender_system" target="_blank">link 1</a>,
+                          <a href="https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada" target="_blank">link 2</a>
+                          and <a href="http://preview.d2l.ai/d2l-en/master/chapter_recommender-systems/recsys-intro.html" target="_blank">link 3</a>.
+                      </i>
                   </div>
               </div>
          </div>
-
      </div>
-
  </div>
 
 <script type="text/javascript"  src="static/bootstrap-4.5.0-dist/js/jquery-3.5.1.js"></script>
